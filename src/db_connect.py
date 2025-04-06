@@ -1,10 +1,16 @@
+import os
+from dotenv import load_dotenv
 import psycopg2
 
-def get_connection():
-    return psycopg2.connect(
-        dbname="your_db",
-        user="your_user",
-        password="your_password",
-        host="your_host",
-        port="your_port"
+# Load environment variables from the .env file
+load_dotenv()
+
+def get_db_connection():
+    conn = psycopg2.connect(
+        dbname=os.getenv("PGDATABASE"),
+        user=os.getenv("PGUSER"),
+        password=os.getenv("PGPASSWORD"),
+        host=os.getenv("PGHOST"),
+        port=os.getenv("PGPORT")
     )
+    return conn

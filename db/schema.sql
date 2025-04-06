@@ -1,10 +1,7 @@
--- jobs table
-CREATE TABLE jobs (
+CREATE TABLE IF NOT EXISTS jobs (
     id SERIAL PRIMARY KEY,
-    title TEXT NOT NULL,
-    description TEXT NOT NULL,
-    location TEXT,
-    company TEXT,
-    skills TEXT[],
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    title VARCHAR(255),
+    company VARCHAR(255),
+    location VARCHAR(255),
+    description TEXT
 );
